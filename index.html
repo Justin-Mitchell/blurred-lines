@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>blurredLines JS</title>
+    <meta charset="utf8">
+    <style type="text/css" media="screen">
+      #wrap {
+        width: 1000px;
+        margin: 0 auto;
+      }
+      .blurry-background {
+        background: black url(background.jpg) no-repeat scroll center center;
+        background
+        width: 800px;
+        height: 800px;
+      }
+      svg {
+        height: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>blurredLines.js</h1>
+    <div id="wrap">
+      <div class="blurry-background">
+      </div>
+    </div>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="jquery.blurred-lines.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      $('.blurry-background').blurredLines({
+        blur: 12
+      });
+    </script>
+  </body>
+</html
