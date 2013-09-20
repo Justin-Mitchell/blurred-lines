@@ -1,5 +1,5 @@
 /*
-blurredLines jQuery Plugin v0.0.1 - Blur background images with ease
+blurredLines jQuery Plugin v0.0.2 - Blur background images with ease
 Release: 19/09/2013
 Author: Jeremy Woertink
  
@@ -20,7 +20,7 @@ Licensed under the WTFPL license: http://www.wtfpl.net/txt/copying/
   _opera = '-o-filter' in _tmp_el;
   _msie = '-ms-filter' in _tmp_el;
   _svgSupport = document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Shape", "1.0");
-  _oldie = typeof navigator.userAgent.match(/msie/ig) !== 'undefined';
+  _oldie = navigator.userAgent.match(/msie/ig) !== null;
   methods = {
     init: function(options) {
       $this = $(this);
@@ -59,6 +59,8 @@ Licensed under the WTFPL license: http://www.wtfpl.net/txt/copying/
             position: "absolute"
           });
           return $elem.append($blurBox);
+        } else {
+          return _internals.log('No clue how to blur for your browser :(');
         }
       });
       return $this;
@@ -73,6 +75,11 @@ Licensed under the WTFPL license: http://www.wtfpl.net/txt/copying/
       $svg = $('<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><filter id="f' + num + '" x="0" y="0"><feGaussianBlur in="SourceGraphic" stdDeviation="' + _settings.blur + '" /></filter></defs></svg>');
       $svg.find('svg').css('height', '0');
       return $svg;
+    },
+    log: function(msg) {
+      if ('console' in window) {
+        return console.log(msg);
+      }
     }
   };
   return $.fn.blurredLines = function(method) {
