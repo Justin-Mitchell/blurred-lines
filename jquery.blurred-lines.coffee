@@ -1,5 +1,5 @@
 ###
-blurredLines jQuery Plugin v0.0.2 - Blur background images with ease
+blurredLines jQuery Plugin v0.0.3 - Blur background images with ease
 Release: 19/09/2013
 Author: Jeremy Woertink
  
@@ -12,7 +12,7 @@ Licensed under the WTFPL license: http://www.wtfpl.net/txt/copying/
  
   # Plugin Settings
   _settings =
-    blur: 8
+    blur: 10
   
   # Check support for the CSS
   _tmp_el = document.createElement('div').style
@@ -42,9 +42,6 @@ Licensed under the WTFPL license: http://www.wtfpl.net/txt/copying/
         else if _svgSupport
           $svg = _internals.generateSVG(index)
           $elem.append($svg)
-          $elem.css
-            position: 'relative'
-            'z-index': '1'
           if $elem.prop('id') == ''
             $elem.prop('id', "xBlurredContainer#{index}")
           id = $elem.prop('id')
@@ -67,7 +64,7 @@ Licensed under the WTFPL license: http://www.wtfpl.net/txt/copying/
       return $this
   _internals =
     generateSVG: (num)->
-      $svg = $('<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><filter id="f'+num+'" x="0" y="0"><feGaussianBlur in="SourceGraphic" stdDeviation="'+_settings.blur+'" /></filter></defs></svg>')
+      $svg = $('<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><filter id="f'+num+'" x="0" y="0"><feGaussianBlur in="SourceGraphic" stdDeviation="'+(parseInt(_settings.blur, 10) - 5)+'" /></filter></defs></svg>')
       $svg.find('svg').css('height', '0')
       $svg
     log: (msg)->
