@@ -1,5 +1,5 @@
 /*
-blurredLines jQuery Plugin v0.0.3 - Blur background images with ease
+blurredLines jQuery Plugin v0.0.4 - Blur background images with ease
 Release: 19/09/2013
 Author: Jeremy Woertink
  
@@ -12,7 +12,8 @@ Licensed under the WTFPL license: http://www.wtfpl.net/txt/copying/
   var $this, methods, _firefox, _internals, _msie, _oldie, _opera, _settings, _svgSupport, _tmp_el, _webkit;
   $this = void 0;
   _settings = {
-    blur: 10
+    blur: 10,
+    opacity: 0.8
   };
   _tmp_el = document.createElement('div').style;
   _webkit = '-webkit-filter' in _tmp_el;
@@ -28,6 +29,7 @@ Licensed under the WTFPL license: http://www.wtfpl.net/txt/copying/
       $this.each(function(index, el) {
         var $blurBox, $elem, $svg, id;
         $elem = $(el);
+        $elem.css('opacity', _settings.opacity);
         if (_webkit) {
           return $elem.css('-webkit-filter', "blur(" + _settings.blur + "px)");
         } else if (_firefox) {
